@@ -49,12 +49,12 @@ void Array::print( )
 // 線形探索を行ない，探索キー key と一致するデータの位置を返す関数
 int Array::binarySearch( int key ) {
 
-  int max_index = size;
+  int max_index = size - 1;
   int min_index = 0;
 
   int index = size/2;
-  while(max_index > index && min_index < index){
-
+  //while(max_index > index && min_index < index){
+  while(max_index >= min_index){
     if( *(array + index) == key ){
 
       return index;
@@ -63,13 +63,13 @@ int Array::binarySearch( int key ) {
     if( *(array + index) > key){
 
       max_index = index;
-      index = (max_index + min_index) / 2;
     }
     else{
 
       min_index = index;
-      index = (max_index + min_index) / 2;
     }
+	  
+    index = (max_index + min_index) / 2;
   }
 
     return -1;
